@@ -7,6 +7,7 @@ setup(name='python-identitykeys',
       url='https://github.com/FactomProject/python-identitykeys',
       classifiers=[
           "Programming Language :: Python :: 3",
+          "License :: OSI Approved :: MIT License",
           "Intended Audience :: Developers",
           "Topic :: Software Development :: Libraries",
           "Topic :: Utilities",
