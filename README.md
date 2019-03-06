@@ -2,6 +2,28 @@
 
 A small module of tools to generate and use key pairs for Factom Identities.
 
+## Usage
+To install this module from pypi, run the following:
+```$ pip3 install python-identitykeys```
+
+Generating a new random key pair:
+```
+>>> import identitykeys
+>>> private_key, public_key = identitykeys.generate_key_pair()
+>>> print(private_key.to_string(), public_key.to_string())
+idsec2ioPQqJvJzzwqskEW67yrWd2GwQMs1oCuLHsLHxejmBbEFpEY8 idpub23LV4aM3K3A3G1yyRebacQsMUGeBygi83jZiKwmbWM3DMP1cmr
+```
+
+Signing a message and then verifying the signature:
+```
+message = b'hello'
+>>> signature = private_key.sign(message)
+>>> if public_key.verify(signature, message):
+...     print("Signature verified successfully")
+... 
+Signature verified successfully
+```
+
 ## Format of an Identity Key Pair
 *Note: the following text is taken from the [Application Identity Specification](https://github.com/FactomProject/FactomDocs/blob/FD-849_PublishNewIdentitySpec/ApplicationIdentity.md)*
 
@@ -32,23 +54,3 @@ Example key pair for the private key of all zeros:
 
 Example key pair for the private key of all ones:
 - `idsec1ARpkDoUCT9vdZuU3y2QafjAJtCsQYbE2d3JDER8Nm56CWk9ix idpub2op91ghJbRLrukBArtxeLJotFgXhc6E21syu3Ef8V7rCcRY5cc`
-
-## Example Code Usage
-
-Generating a new random key pair:
-```
->>> import identitykeys
->>> private_key, public_key = identitykeys.generate_key_pair()
->>> print(private_key.to_string(), public_key.to_string())
-idsec2ioPQqJvJzzwqskEW67yrWd2GwQMs1oCuLHsLHxejmBbEFpEY8 idpub23LV4aM3K3A3G1yyRebacQsMUGeBygi83jZiKwmbWM3DMP1cmr
-```
-
-Signing a message and then verifying the signature:
-```
-message = b'hello'
->>> signature = private_key.sign(message)
->>> if public_key.verify(signature, message):
-...     print("Signature verified successfully")
-... 
-Signature verified successfully
-```
