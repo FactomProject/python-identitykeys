@@ -2,7 +2,7 @@ from setuptools import setup
 import os
 
 setup(name='python-identitykeys',
-      version='0.1',
+      version='0.2',
       description='Tools for using Factom identity keys',
       url='https://github.com/FactomProject/python-identitykeys',
       classifiers=[
@@ -15,4 +15,8 @@ setup(name='python-identitykeys',
       keywords=['factom', 'identity'],
       license='MIT',
       py_modules=['identitykeys'],
+      install_requires=[
+          'ed25519',
+          'python-bitcoinlib'
+      ],
       zip_safe=False)
